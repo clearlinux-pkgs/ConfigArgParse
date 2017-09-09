@@ -4,12 +4,13 @@
 #
 Name     : ConfigArgParse
 Version  : 0.12.0
-Release  : 3
+Release  : 4
 URL      : https://pypi.debian.net/ConfigArgParse/ConfigArgParse-0.12.0.tar.gz
 Source0  : https://pypi.debian.net/ConfigArgParse/ConfigArgParse-0.12.0.tar.gz
 Summary  : A drop-in replacement for argparse that allows options to also be set via config files and/or environment variables.
 Group    : Development/Tools
 License  : MIT
+Requires: ConfigArgParse-legacypython
 Requires: ConfigArgParse-python
 Requires: PyYAML
 BuildRequires : PyYAML-python
@@ -20,15 +21,28 @@ BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
-Overview
 ~~~~~~~~
-Applications with more than a handful of user-settable options are best
-configured through a combination of command line args, config files,
-hard-coded defaults, and in some cases, environment variables.
+        
+        Applications with more than a handful of user-settable options are best
+        configured through a combination of command line args, config files,
+        hard-coded defaults, and in some cases, environment variables.
+        
+        Python's command line parsing modules such as argparse have very limited
+        support for config files and environment variables, so this module
+        extends argparse to add these features.
+
+%package legacypython
+Summary: legacypython components for the ConfigArgParse package.
+Group: Default
+
+%description legacypython
+legacypython components for the ConfigArgParse package.
+
 
 %package python
 Summary: python components for the ConfigArgParse package.
 Group: Default
+Requires: ConfigArgParse-legacypython
 Provides: configargparse-python
 
 %description python
@@ -43,7 +57,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1494865253
+export SOURCE_DATE_EPOCH=1505000301
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -53,7 +67,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1494865253
+export SOURCE_DATE_EPOCH=1505000301
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -64,7 +78,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
