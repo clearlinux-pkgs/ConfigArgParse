@@ -4,7 +4,7 @@
 #
 Name     : ConfigArgParse
 Version  : 0.12.0
-Release  : 5
+Release  : 6
 URL      : https://pypi.debian.net/ConfigArgParse/ConfigArgParse-0.12.0.tar.gz
 Source0  : https://pypi.debian.net/ConfigArgParse/ConfigArgParse-0.12.0.tar.gz
 Summary  : A drop-in replacement for argparse that allows options to also be set via config files and/or environment variables.
