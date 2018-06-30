@@ -4,19 +4,19 @@
 #
 Name     : ConfigArgParse
 Version  : 0.13.0
-Release  : 17
+Release  : 18
 URL      : https://pypi.debian.net/ConfigArgParse/ConfigArgParse-0.13.0.tar.gz
 Source0  : https://pypi.debian.net/ConfigArgParse/ConfigArgParse-0.13.0.tar.gz
 Summary  : A drop-in replacement for argparse that allows options to also be set via config files and/or environment variables.
 Group    : Development/Tools
 License  : MIT
 Requires: ConfigArgParse-python3
+Requires: ConfigArgParse-license
 Requires: ConfigArgParse-python
 Requires: PyYAML
 BuildRequires : PyYAML-python
 BuildRequires : pbr
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -30,6 +30,14 @@ BuildRequires : setuptools
         Python's command line parsing modules such as argparse have very limited
         support for config files and environment variables, so this module
         extends argparse to add these features.
+
+%package license
+Summary: license components for the ConfigArgParse package.
+Group: Default
+
+%description license
+license components for the ConfigArgParse package.
+
 
 %package python
 Summary: python components for the ConfigArgParse package.
@@ -58,16 +66,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523287316
+export SOURCE_DATE_EPOCH=1530380998
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/ConfigArgParse
+cp LICENSE %{buildroot}/usr/share/doc/ConfigArgParse/LICENSE
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -75,6 +85,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/ConfigArgParse/LICENSE
 
 %files python
 %defattr(-,root,root,-)
