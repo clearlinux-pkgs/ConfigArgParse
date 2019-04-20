@@ -4,7 +4,7 @@
 #
 Name     : ConfigArgParse
 Version  : 0.14.0
-Release  : 23
+Release  : 24
 URL      : https://files.pythonhosted.org/packages/55/ea/f0ade52790bcd687127a302b26c1663bf2e0f23210d5281dbfcd1dfcda28/ConfigArgParse-0.14.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/55/ea/f0ade52790bcd687127a302b26c1663bf2e0f23210d5281dbfcd1dfcda28/ConfigArgParse-0.14.0.tar.gz
 Summary  : A drop-in replacement for argparse that allows options to also be set via config files and/or environment variables.
