@@ -1,3 +1,5 @@
-1.5
+1.5.1
+PyYAML-python
 pip
+pytest-python
 python-mock-python
