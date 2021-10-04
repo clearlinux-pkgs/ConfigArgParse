@@ -1,5 +1,5 @@
 PKG_NAME := ConfigArgParse
-URL = https://files.pythonhosted.org/packages/42/1c/3e40ae017361f30b01b391b1ee263ec93e4c2666221c69ebba297ff33be6/ConfigArgParse-1.5.2.tar.gz
+URL = https://files.pythonhosted.org/packages/16/05/385451bc8d20a3aa1d8934b32bd65847c100849ebba397dbf6c74566b237/ConfigArgParse-1.5.3.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
